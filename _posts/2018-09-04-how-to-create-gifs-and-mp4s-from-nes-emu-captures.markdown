@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "How to create GIFs and MP4 videos from NES emulator captures"
-date:   2018-09-03 21:50:38 +0200
-categories: videogames 
+date:   2018-09-04 22:40:00 +0200
+categories: [videogames, blogging, emulation]
 tags: NES gif mp4
 ---
 
