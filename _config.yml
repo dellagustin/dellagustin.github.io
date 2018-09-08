@@ -24,6 +24,7 @@ github_username:  dellagustin
 linkedin_username: dellagustin
 disqus:
   shortname: dellagustin-blog
+google_analytics: UA-125424762-1
 
 # Build settings
 markdown: kramdown
