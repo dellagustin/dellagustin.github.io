@@ -148,10 +148,10 @@ It was a fun ride, getting acquainted with Z80 assembly takes a bit of patience,
 A huge thanks go to the people maintaining the excellent content on the website smspower.org.
 
 ## References
-- https://en.wikipedia.org/wiki/Ninja_Gaiden_(Master_System)
-- http://www.romhacking.net/forum/index.php?topic=19594.msg276409#msg276409
-- https://landley.net/history/mirror/cpm/z80.html
-- https://wikiti.brandonw.net/index.php?title=Z80_Instruction_Set
+- <https://en.wikipedia.org/wiki/Ninja_Gaiden_(Master_System)>
+- <http://www.romhacking.net/forum/index.php?topic=19594.msg276409#msg276409>
+- <https://landley.net/history/mirror/cpm/z80.html>
+- <https://wikiti.brandonw.net/index.php?title=Z80_Instruction_Set>
 - [Trainers - Do It Yourself](https://www.smspower.org/Articles/TrainersDoItYourself) at smspower.org
 - [Z80 Instructions Set](https://www.smspower.org/Development/InstructionSet) at smspower.org
 - [ROM Header, Checksum](https://www.smspower.org/Development/ROMHeader#Checksum7ffa2Bytes) at smspower.org
