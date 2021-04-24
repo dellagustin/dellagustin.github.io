@@ -10,7 +10,10 @@ tags: sms rom hack ninja gaiden
 
 I have made my first ROM hack, fixing an issue on Master System's Ninja Gaiden, where get infinite magic points once you collect 999 or more of them.
 
-Here is the BPS patch: [Ninja-Gaiden-Europe-avoid-infinite-magic.bps](/assets/downloads/Ninja-Gaiden-Europe-avoid-infinite-magic.bps)
+Here are the BPS patches: 
+
+- [Ninja-Gaiden-Europe-avoid-infinite-magic.bps](/assets/downloads/Ninja-Gaiden-Europe-avoid-infinite-magic.bps)
+- [Ninja-Gaiden-Europe-prototype-avoid-infinite-magic.bps](/assets/downloads/Ninja-Gaiden-Europe-prototype-avoid-infinite-magic.bps)
 
 ## A bit of my motivation
 
@@ -140,6 +143,8 @@ Now I had my hack ready, so it is time to produce a BPS patch, I used a tool cal
 ![Floating IPS](/assets/floating-ips.png)
 
 And there we have it, a patch file ready to be applied: [Ninja-Gaiden-Europe-avoid-infinite-magic.bps](/assets/downloads/Ninja-Gaiden-Europe-avoid-infinite-magic.bps)
+
+Later I was informed that there was also a prototype ROM for Ninja Gaiden on the Master System, so I produced a patch for that one too: [Ninja-Gaiden-Europe-prototype-avoid-infinite-magic.bps](/assets/downloads/Ninja-Gaiden-Europe-prototype-avoid-infinite-magic.bps)
 
 ## Closing words
 
