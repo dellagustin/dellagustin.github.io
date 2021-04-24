@@ -14,7 +14,7 @@ Here is the BPS patch: [Ninja-Gaiden-Europe-avoid-infinite-magic.bps](/assets/do
 
 ## A bit of my motivation
 
-Growing up in Brazil, I owned a Sega Master System when I was kid. The SMS was far more available, and probably more popular then the Nintendo Entertainment System, as it was very well distributed by a local company, Tec Toy.
+Growing up in Brazil, I owned a Sega Master System when I was kid. The SMS was far more available there, and probably more popular then the Nintendo Entertainment System (NES), as it was very well distributed by a local company, Tec Toy.
 
 I'm a long time gamer, and a software developer by trade, with some knowledge on electronics and retro computers architecture, more theoretical than practical.
 
@@ -22,17 +22,17 @@ Putting all that together, it is not a surprise that I have a certain fascinatio
 
 For quite some time now I have been wanting to get something done in that area, and ROM hacking is a nice way to get acquainted with the topic.
 
-In my spare time I am also an occasional podcaster. At [Fliperama de Boteco](https://fliperamadeboteco.com/), a Brazilian podcast, we talk mostly about retro games, and some time ago we published an [episode on Ninja Gaiden for the Master System](https://fliperamadeboteco.com/2019/05/30/fliperama-de-boteco-179-ninja-gaiden-master-system/). One of things that got our attention was the fact that once you collected more than 999 magic points, you could use special weapons and magic without running out of points, specially with a fire magic that makes you invincible, and normally cost you 50 magic points. That made the game too easy, and to me it felt like a bug, as you could collect enough magic to do this soon in the game.
+In my spare time I am also an occasional podcaster. At [Fliperama de Boteco](https://fliperamadeboteco.com/), a Brazilian podcast, we talk mostly about retro games. Some time ago we published an [episode on Ninja Gaiden for the Master System](https://fliperamadeboteco.com/2019/05/30/fliperama-de-boteco-179-ninja-gaiden-master-system/). One of things that got our attention was the fact that once you collected more than 999 magic points, you could use special weapons and magic without running out of points, specially with a fire magic that makes you invincible, and normally cost you 50 magic points. That made the game too easy, and to me it felt like a bug, as you could collect enough magic to do this early in the game.
 
 Recently, someone posted about this game in a Brazilian Master System group on Facebook, and one of the replies was "I pray that someone will make a hack to fix the bug of the thousand magic points ... it makes the game too easy when it reaches 999". I took that as an interesting challenge to get myself initiated in ROM hacking, and went for it.
 
 ## How I did it
 
-The fist step was to find out where in the RAM memory the information about the number of magic points.
+The fist step was to find out where in the RAM (Random Access Memory) the information about the number of magic points was stored.
 
 I started searching for it using the emulator BizHawk, which contains a _RAM Search_ function.
 
-Using this function, I eventually found out that magic points were stored in the following addresses:
+Using this feature, I eventually found out that magic points were stored in the following addresses:
 
 - `0x1FB8` - first digit
 - `0x1FB9` - second digit
@@ -46,13 +46,17 @@ For example, if you have 150 magic points, these will be the values stored addre
 - `0x1FBA` - 1
 - `0x1FBB` - 0
 
-One important information, this addresses are relative to `0x0000`, but the RAM memory on the Master System is mapped to the address range from `0xC000-0xDFFF` (and mirrored on the address range `0xE000-0xFFFF`), so `0x1FB8` is actually mapped at `0xDFBB` or `0xFFBB`.
+![RAM Watch 290 magic points](/assets/ninja-gaiden-ram-watch-290.png)
 
-Now that I have identified this addresses, I started looking for the code that changed their content.
+![RAM Watch 999 magic points](/assets/ninja-gaiden-ram-watch-999.png)
+
+One important information, this addresses are relative to `0x0000`, but RAM on the Master System is mapped to the address range from `0xC000-0xDFFF` (and mirrored on the address range `0xE000-0xFFFF`), so `0x1FB8` is actually mapped at `0xDFBB` or `0xFFBB`.
+
+Now that I have identified these addresses, I started looking for the code that changed their content.
 
 For that I used a different emulator, [Emulicious](https://emulicious.net/), which has a very good disassembler and debugger.
 
-I added breakpoints to stop the execution where this addresses were read or written, and started doing stuff like using magic and getting items that granted magic points, also reaching over 999.
+I added breakpoints to stop the execution where this addresses were read or written, and started doing stuff like using magic and getting items that granted magic points, also reaching over 999, then checking the code around the breakpoints.
 
 Ultimately I discovered that `0xDFBB` was used to protect the magic counter from overflowing, but I also found out that it was checked at the beginning of routine that subtracted magic points when magic was used:
 
@@ -73,7 +77,7 @@ _LABEL_513E_:
     ret
 ```
 
-So I figured that setting the content of `0xDFBB` back to zero instead of checking it and jumping should give me the result I wanted.
+So I figured that setting the content of `0xDFBB` back to zero, instead of checking it and jumping, should give me the result I wanted.
 
 To do that, I used the Hex Editor [wxHexEditor](https://sourceforge.net/projects/wxhexeditor/).
 
@@ -83,7 +87,7 @@ First thing was look at the address `0x50D9` (20697 in decimal) and locate the o
 
 Now, without calling another routine, I had 6 bytes to do what I wanted, set the content of `0xDFBB` with `0`.
 
-There are more sophisticated ways of doing this, like using a Z80 assembler like WLA-DX, but that would be like bringing a gun to a knife, fight. I did not even had to look for the opcodes of the instructions I wanted to use to replace the check:
+There are more sophisticated ways of doing this, like using a Z80 assembler like WLA-DX, but that would be like bringing a gun to a knife fight. I did not even had to look for the opcodes of the instructions I wanted to use to replace the check:
 
 ```
     ld a, $00
@@ -104,7 +108,7 @@ Now, I tried to load the game, and...
 
 Ooops, something is wrong...
 
-The ROMs have a checksum stored at the address `0x7FFC`, which is checked by the BIOS. After hacking the ROM we need to adjust the checksum. To calculate the checksum for the patch I used the command line tool [SMS Check](https://www.smspower.org/Development/SMSCheck):
+The ROMs have a checksum stored at the address `0x7FFA`, which is checked by the BIOS. After hacking the ROM we need to adjust the checksum. To calculate the checksum for the patch I used the command line tool [SMS Check](https://www.smspower.org/Development/SMSCheck):
 
 ```
 C:\Emuladores\Roms-SMS>smscheck.exe "Ninja Gaiden (Europe) - avoid infinite magic.sms"
@@ -129,7 +133,7 @@ And, there we go:
 
 ![Ninja Gaiden - no infinite magic](/assets/ninja-gaiden-no-infinite-magic.gif)
 
-No more infinite fire magic!
+**No more infinite fire magic!**
 
 Now I had my hack ready, so it is time to produce a BPS patch, I used a tool called [Floating IPS](https://www.romhacking.net/utilities/1040/).
 
