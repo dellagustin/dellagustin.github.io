@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Saying Hello in the PC-DOS 1.0 Operating System"
+title:  "Saying 'Hello World' in the PC-DOS 1.0 Operating System"
 date: 2023-06-26
 categories: [retro-computers]
 tags: ibm-pc, pc-dos
@@ -131,12 +131,12 @@ If you would like to learn more about the history behind PC-DOS and MS-DOS, I re
 
 ## References
 
-- https://en.wikipedia.org/wiki/IBM_Personal_Computer
-- https://en.wikipedia.org/wiki/Intel_8088
-- https://en.wikipedia.org/wiki/IBM_PC_DOS
-- https://en.wikipedia.org/wiki/DOS_API
-- https://thestarman.pcministry.com/asm/debug/debug.htm
+- <https://en.wikipedia.org/wiki/IBM_Personal_Computer>
+- <https://en.wikipedia.org/wiki/Intel_8088>
+- <https://en.wikipedia.org/wiki/IBM_PC_DOS>
+- <https://en.wikipedia.org/wiki/DOS_API>
+- <https://thestarman.pcministry.com/asm/debug/debug.htm>
 - Emulators, disk images and roms
-    - https://www.pcjs.org/machines/pcx86/ibm/5150/mda/
-    - https://www.pcem-emulator.co.uk/downloads.html
-    - https://github.com/BaRRaKudaRain/PCem-ROMs/tree/master/ibmpc
+    - <https://www.pcjs.org/machines/pcx86/ibm/5150/mda/>
+    - <https://www.pcem-emulator.co.uk/downloads.html>
+    - <https://github.com/BaRRaKudaRain/PCem-ROMs/tree/master/ibmpc>
