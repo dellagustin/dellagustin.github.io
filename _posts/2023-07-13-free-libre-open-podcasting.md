@@ -57,8 +57,8 @@ I hope this clarifies the idea for _Free/Libre and Open Podcasting_ and that it 
 If you are seeing a contradiction between preaching for freedom and openness while having a proprietary comments platform (at the moment of writing, Disqus), please know I'm not proud of that. As a free and open alternative, if you have comments, please reply the the Mastodon post that originated this post: <https://fosstodon.org/@dellagustin/110706347484988427>
 
 ## Links and References
-- https://www.gnu.org/philosophy/floss-and-foss.en.html
-- https://www.gnu.org/philosophy/free-sw.html
-- https://en.wikipedia.org/wiki/Alternative_terms_for_free_software
-- https://podstandards.org/2022/03/24/podcasting-is-better-when-its-open/
-- https://en.wikipedia.org/wiki/Fediverse
+- <https://www.gnu.org/philosophy/floss-and-foss.en.html>
+- <https://www.gnu.org/philosophy/free-sw.html>
+- <https://en.wikipedia.org/wiki/Alternative_terms_for_free_software>
+- <https://podstandards.org/2022/03/24/podcasting-is-better-when-its-open/>
+- <https://en.wikipedia.org/wiki/Fediverse>
