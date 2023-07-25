@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Saying 'Hello World' in the MSX-DOS Operating System"
-date: 2023-07-02
+date: 2023-07-25
 categories: [retro-computers]
 tags: msx, msx-dos
 ---
